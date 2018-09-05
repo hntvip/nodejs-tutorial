@@ -48,6 +48,38 @@ adadasd
       <br/>  next() // pass control to the next handler
       <br/>  });
     </code>
-    </br> *<u>More informations at</u> : <a link="https://expressjs.com/en/4x/api.html#app.METHOD"> https://expressjs.com/en/4x/api.html#app.METHOD </a>
+    </br> *<u>More informations at</u> : <a link="https://expressjs.com/en/4x/api.html#app.METHOD"> https://expressjs.com/en/4x/api.html#app.METHOD </a> <br/>
     
+*Path Pattern:
+    
+- This will match paths starting with `/abcd` and `/abd`:<br/>
+  
+<pre>
+  app.use('/abc?d', function (req, res, next) {
+    next();
+  });
+</pre>
+
+- This will match paths starting with `/abcd`, `/abbcd`, `/abbbbbcd`, and so on: <br/>
+
+<pre> 
+  app.use('/ab+cd', function (req, res, next) {
+    next();
+  });
+</pre>
+
+- This will match paths starting with `/abcd`, `/abxcd`, `/abFOOcd`, `/abbArcd`, and so on: <br/>
+
+<pre> 
+    app.use('/ab\*cd', function (req, res, next) {
+       next();
+    });
+</pre> 
+
+- This will match paths starting with `/ad` and `/abcd`: <br/>
+<pre>
+  app.use('/a(bc)?d', function (req, res, next) {
+    next();
+  });
+</pre>
     
